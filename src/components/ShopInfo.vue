@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script setup name="ShopInfo">
+<script setup>
 // export default {
 //   name: 'ShopInfo',
 //   props: ['item', 'hideBorder']
