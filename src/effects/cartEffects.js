@@ -9,7 +9,7 @@ export const useCommonCartEffect = (shopId) => {
       shopId, productId, productInfo, num
     })
   }
-  
+
   const productList = computed(() => {
     const productList = cartList[shopId]?.productList || {}
     const notEmptyProductList = {}

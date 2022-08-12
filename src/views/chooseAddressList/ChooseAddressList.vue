@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Address from '../../components/Address'
 import useCommonAddressEffect from '../../effects/addressEffect'
 
@@ -24,10 +24,24 @@ import { toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
 
-export default {
-  name: 'ChooseAddressList',
-  components: { Address },
-  setup() {
+// export default {
+//   name: 'ChooseAddressList',
+//   components: { Address },
+//   setup() {
+//     const store = useStore()
+//     const router = useRouter()
+//     const route = useRoute()
+//     const shopId = route.params.shopId
+//     const { addressList } = toRefs(store.state)
+//     const { getAddressList } = useCommonAddressEffect()
+//     getAddressList()
+//     const handleBackClick = () => { router.back() }
+//     const handleAddressClick = (id) => {
+//       router.push(`/orderConfirmation/${shopId}/${id}`)
+//     }
+//     return { addressList, handleBackClick, handleAddressClick }
+//   }
+// }
     const store = useStore()
     const router = useRouter()
     const route = useRoute()
@@ -39,9 +53,6 @@ export default {
     const handleAddressClick = (id) => {
       router.push(`/orderConfirmation/${shopId}/${id}`)
     }
-    return { addressList, handleBackClick, handleAddressClick }
-  }
-}
 </script>
 
 <style lang="scss" scoped>

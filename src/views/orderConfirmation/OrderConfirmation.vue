@@ -6,20 +6,22 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import useCommonAddressEffect from '../../effects/addressEffect'
 import TopArea from './TopArea'
 import ProductList from './ProductList'
 import Order from './Order'
 
-export default {
-  name: 'OrderConfirmation',
-  components: { TopArea, ProductList, Order },
-  setup() {
-    const { getAddressList } = useCommonAddressEffect()
-    getAddressList()
-  }
-}
+// export default {
+//   name: 'OrderConfirmation',
+//   components: { TopArea, ProductList, Order },
+//   setup() {
+//     const { getAddressList } = useCommonAddressEffect()
+//     getAddressList()
+//   }
+// }
+const { getAddressList } = useCommonAddressEffect()
+getAddressList()
 </script>
 
 <style lang="scss" scoped>

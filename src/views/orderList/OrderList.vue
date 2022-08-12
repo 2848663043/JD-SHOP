@@ -37,12 +37,50 @@
   <Docker :currentIndex="2"/>
 </template>
 
-<script>
-import { reactive, toRefs } from 'vue'
+<script setup>
+import {  reactive, toRefs } from 'vue'
 import { get } from '../../utils/request'
 import Docker from '../../components/Docker'
 
+// // 处理订单列表逻辑
+// const useOrderListEffect = () => {
+//   const data = reactive({ list:[]})
+//   const getNearbyList = async () => {
+//     const result = await get('/api/order')
+//     if (result?.errno === 0 && result?.data?.length) {
+//       const orderList = result.data
+//       orderList.forEach((order) => {
+//         const products = order.products || []
+//         let totalPrice = 0
+//         let totalNumber = 0
+//         products.forEach((productItem) => {
+//           totalNumber += (productItem?.orderSales || 0)
+//           totalPrice += ((productItem?.product?.price * productItem?.orderSales) || 0)
+//         })
+//         order.totalPrice = totalPrice
+//         order.totalNumber = totalNumber
+//       })
+//       data.list = result.data
+//     }
+//   }
+//   getNearbyList()
+//   const { list } = toRefs(data)
+//   return { list }
+// }
+
+// export default {
+//   name: 'OrderList',
+//   components: { Docker },
+//   setup() {
+//     const { list } = useOrderListEffect()
+//     return { list }
+//   }
+// }
+
+
+
 // 处理订单列表逻辑
+let list = reactive({})
 const useOrderListEffect = () => {
   const data = reactive({ list:[]})
   const getNearbyList = async () => {
@@ -63,19 +101,20 @@ const useOrderListEffect = () => {
       data.list = result.data
     }
   }
-  getNearbyList()
-  const { list } = toRefs(data)
-  return { list }
+   getNearbyList()
+    list  = toRefs(data).list
 }
+useOrderListEffect()
 
-export default {
-  name: 'OrderList',
-  components: { Docker },
-  setup() {
-    const { list } = useOrderListEffect()
-    return { list }
-  }
-}
+
+// export default {
+//   name: 'OrderList',
+//   components: { Docker },
+//   setup() {
+//     const { list } = useOrderListEffect()
+//     return { list }
+//   }
+// }
 </script>
 
 <style lang="scss" scoped>

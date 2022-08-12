@@ -11,11 +11,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Address',
-  props: ['address']
-}
+<script setup>
+// export default {
+//   name: 'Address',
+//   props: ['address']
+// }
+import { defineProps } from 'vue';
+defineProps(['address'])
 </script>
 
 <style lang="scss" scoped>
